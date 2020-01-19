@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:foregroundGravity="top"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/mTxt_POS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Parts of Speech"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_IdiomPhrase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Idioms and Phrases"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_ClauseCorrections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Clauses and Corrections"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_TransformationSentences"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Transformation of Sentences"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Voice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Transformation of Voice"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Degrees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Transformation of Degrees"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_WordMeaning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Words Meaning"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Synonyms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Synonyms"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Antonyms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Antonyms"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Spelling"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Spellings"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_WordRest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Words Remaining Part"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Narration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Narration"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_ConditionalSentence"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Conditional Sentence"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Analogy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Analogy"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Diction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Diction"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/mTxt_Translation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@color/option_1"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="100dp"
+                android:padding="10dp"
+                android:text="Translation"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

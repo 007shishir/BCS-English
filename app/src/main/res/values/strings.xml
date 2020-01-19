@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">BCS English</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">MCQ Section</string>
+    <string name="title_notifications">Memorize</string>
+    <string name="no_explanation"><h2>No <span style="text-decoration: underline;">explanatoin</span>
+        is given for this question!</h2></string>
+
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="memorize">MEMORIZE</string>
+    <string name="mcq">MCQ</string>
+
+    <string name="primary">Primary</string>
+    <string name="learning">Learning</string>
+    <string name="master">Master</string>
+    <string name="right">RIGHT!</string>
+    <string name="wrong">WRONG!</string>
+
+    //mcq
+    <string name="mcq_parts_of_speech">bcs_evs</string>
+    <string name="mcq_Idioms_phrases">bcs_idioms_phrases</string>
+    <string name="mcq_clause_correction">mcq_cls_corr</string>
+
+    //memorise
+    <string name="memorise_Parts_of_Speech">mem_parts_speech</string>
+    <string name="memorise_Idioms_Phrases">bcs_pos_memorize</string>
+    <string name="memorise_Clause_Correction">bcs_cls_corr_memorize</string>
+    <string name="memorise_Transformation_Sentences">mem_trans_sent</string>
+    <string name="memorise_words_meaning">mem_words</string>
+    <string name="memorise_additional_section">mem_additional</string>
+</resources>
