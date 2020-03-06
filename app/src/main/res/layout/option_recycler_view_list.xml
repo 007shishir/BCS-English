@@ -20,6 +20,7 @@
         android:gravity="center"
         android:maxHeight="120dp"
         android:minHeight="80dp"
+        android:padding="5dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="@android:color/black"

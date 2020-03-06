@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    all the string value from the view of McqVersion1 Class-->
+    <string name="master_status">master_status</string>
+    <string name="learning_status">learning_status</string>
+    <string name="primary_status">primary_status</string>
+    <string name="random_text">random_text</string>
+    <string name="refresh">refresh</string>
+    <string name="explanation">explanation</string>
+    <string name="submit">submit</string>
+    <string name="checkbox">checkbox</string>
+    <string name="try_text">Try</string>
+    <string name="point">point</string>
+    <string name="answer">answer</string>
+    <string name="check">check</string>
+    <string name="question">question</string>
+    <string name="id">id</string>
+    <string name="topic">topic</string>
+    <string name="tap_to_see_the_answer">Tap to see the answer!</string>
+    <string name="i_didn_t_know_this">I didn\'t know this</string>
+    <string name="i_knew_this">I Knew this</string>
+    <string name="level_of_card">Level of Card</string>
+    <string name="info">info</string>
+</resources>

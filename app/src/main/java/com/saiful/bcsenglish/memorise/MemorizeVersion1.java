@@ -1,6 +1,5 @@
 package com.saiful.bcsenglish.memorise;
 
-import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -10,23 +9,25 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-
+import androidx.lifecycle.ViewModelProvider;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.saiful.bcsenglish.AdmobAd;
+import com.saiful.bcsenglish.Interstitial_ad;
 import com.saiful.bcsenglish.R;
 
 import java.util.List;
@@ -49,7 +50,6 @@ public class MemorizeVersion1 extends AppCompatActivity {
     TextView mTxt_quest, mTxt_E1, mTxt_E2, mTxt_level, mTxt_id, mTxt_known, mTxt_unknown,
             mTxt_PointEachQ, mTxt_Submit, mPrimary_Text, mLearning_Text, mMaster_Text,
             mTxt_Header_topic;
-    ImageView imageView_memorise;
     LinearLayout mLL_image_memorise;
     LinearLayout mL_explanation;
 
@@ -71,7 +71,7 @@ public class MemorizeVersion1 extends AppCompatActivity {
 
     String mPost_key;
     String child_Name;
-//    AdView adView;
+    private Interstitial_ad interstitial_ad;
 
 
     @Override
@@ -79,17 +79,6 @@ public class MemorizeVersion1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memorize_version1);
         Firebase.setAndroidContext(this);
-
-//        AudienceNetworkAds.initialize(this);
-//        adView = new AdView(this,
-//                getResources().getString(R.string.memorize_medium_rectangle_ad),
-//                AdSize.RECTANGLE_HEIGHT_250);
-//        // Find the Ad Container
-//        LinearLayout adContainer = findViewById(R.id.banner_container);
-//        // Add the ad view to your activity layout
-//        adContainer.addView(adView);
-//        // Request an ad
-//        adView.loadAd();
 
         firebaseRootURL = getResources().getString(R.string.firebase_database_url)+"/";
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -99,9 +88,24 @@ public class MemorizeVersion1 extends AppCompatActivity {
         connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         networkCheck();
 
-        viewModel = ViewModelProviders.of(this).get(Memorize_ViewModel.class);
+        viewModel = new ViewModelProvider(this).get(Memorize_ViewModel.class);
         mPost_key = Objects.requireNonNull(getIntent().getExtras()).getString("key_name");
         child_Name = Objects.requireNonNull(getIntent().getExtras()).getString("childName");
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {}
+        });
+
+        //initializing banner id
+        AdmobAd admobAd = new AdmobAd((AdView) findViewById(R.id.adView));
+        admobAd.bannerAd_initialize();
+
+        //Initializing Interstitial ad
+        interstitial_ad = new Interstitial_ad(getApplicationContext());
+        interstitial_ad.createInterstitial();
+        interstitial_ad.showInterstitial();
 
         //This section is for linking the text box with option
         mTxt_quest = findViewById(R.id.mTxt_quest);
@@ -113,7 +117,6 @@ public class MemorizeVersion1 extends AppCompatActivity {
         mTxt_unknown = findViewById(R.id.mTxt_unknown);
         mTxt_PointEachQ = findViewById(R.id.mTxt_PointEachQ);
         mTxt_Submit = findViewById(R.id.mTxt_Submit);
-//        imageView_memorise = findViewById(R.id.mImage_view);
         mLL_image_memorise = findViewById(R.id.mLL_image_memorise);
 
         mPrimary_Text = findViewById(R.id.mPrimary_Text);
@@ -3821,31 +3824,6 @@ public class MemorizeVersion1 extends AppCompatActivity {
         }
     }
 
-    // a will recieve the image link and picasso will show the image in imageView
-//    public void setVisibilityForImage(String a) {
-//
-//        if (a != null && a.equalsIgnoreCase("m")) {
-//            mLL_image_memorise.setVisibility(View.GONE);
-//        } else if (a == null) {
-//            mLL_image_memorise.setVisibility(View.GONE);
-//        } else {
-//            mLL_image_memorise.setVisibility(View.VISIBLE);
-//
-//            // Set the Drawable displayed
-//            Drawable bitmap = getResources().getDrawable(R.drawable.ic_menu_camera);
-//            imageView_memorise.setImageDrawable(bitmap);
-//
-//            Picasso.get().load(a)
-//                    .placeholder(bitmap)
-//                    .into(imageView_memorise);
-//
-//            // Attach a PhotoViewAttacher, which takes care of all of the zooming functionality.
-//            PhotoViewAttacher mAttacher = new PhotoViewAttacher(imageView_memorise);
-//            mAttacher.update();
-//        }
-//
-//    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.memorise, menu);
@@ -3882,9 +3860,6 @@ public class MemorizeVersion1 extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-//        if (adView != null) {
-//            adView.destroy();
-//        }
         super.onDestroy();
     }
 
@@ -3894,5 +3869,17 @@ public class MemorizeVersion1 extends AppCompatActivity {
         }else {
             getE2 = check_explnation;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        interstitial_ad.showInterstitial();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        interstitial_ad.showInterstitial();
     }
 }

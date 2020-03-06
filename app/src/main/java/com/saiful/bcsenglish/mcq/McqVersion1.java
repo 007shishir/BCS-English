@@ -9,25 +9,35 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
-
+import androidx.lifecycle.ViewModelProvider;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.List;
 import java.util.Objects;
-
+import com.saiful.bcsenglish.AdmobAd;
+import com.saiful.bcsenglish.Interstitial_ad;
 import com.saiful.bcsenglish.R;
 
+/**
+ * This class reads data from Firebase Realtime database
+ * and store that data to the ROOM database
+ * This is for MCQ practice
+ * It tracks user action
+ * The future could be collecting more user oriented data and storing it to the room database
+ * @author Saiful Islam
+ * @since 6 March 2020
+ */
 
 public class McqVersion1 extends AppCompatActivity {
 
@@ -35,9 +45,7 @@ public class McqVersion1 extends AppCompatActivity {
     private Mcq_ViewModel mcq_viewModel;
     private ProgressBar progressBar2, progressPrimary, progressLearning, progressMaster;
     private Handler handler = new Handler();
-
     private ConnectivityManager connectivityManager;
-//    private AdView mADview1, mADview2, mADview3, mADview4;
 
     String mPost_key;
     String child_Name;
@@ -103,7 +111,8 @@ public class McqVersion1 extends AppCompatActivity {
     private Button btn_next;
     private Button btn_prev;
     private Button btn_refresh;
-//    private AdView adView1, adView2;
+
+    Interstitial_ad interstitial_ad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,27 +122,26 @@ public class McqVersion1 extends AppCompatActivity {
 
         connectivityManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 
-//        AudienceNetworkAds.initialize(this);
-//        adView1 = new AdView(this,
-//                getResources().getString(R.string.mcq_facebook_banner_90),
-//                AdSize.BANNER_HEIGHT_50);
-//        adView2 = new AdView(this,
-//                getResources().getString(R.string.mcq_facebook_medium_rectangle),
-//                AdSize.RECTANGLE_HEIGHT_250);
-//        // Find the Ad Container
-//        LinearLayout adContainer1 = findViewById(R.id.banner_container1);
-//        LinearLayout adContainer2 = findViewById(R.id.banner_container2);
-//        // Add the ad view to your activity layout
-//        adContainer1.addView(adView1);
-//        adContainer2.addView(adView2);
-//        // Request an ad
-//        adView1.loadAd();
-//        adView2.loadAd();
+
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {}
+        });
+
+        //initializing banner id
+        AdmobAd admobAd = new AdmobAd((AdView) findViewById(R.id.adView));
+        admobAd.bannerAd_initialize();
+
+        //Initializing Interstitial ad
+        interstitial_ad = new Interstitial_ad(getApplicationContext());
+        interstitial_ad.createInterstitial();
+        interstitial_ad.showInterstitial();
 
         //connecting with viewmodel class
-        mcq_viewModel = ViewModelProviders.of(this).get(Mcq_ViewModel.class);
+        mcq_viewModel = new ViewModelProvider(this).get(Mcq_ViewModel.class);
 //        "https://mcq-master-english.firebaseio.com"
-        firebaseRootURL = getResources().getString(R.string.firebase_database_url)+"/";
+        firebaseRootURL = getResources().getString(R.string.firebase_database_url) + "/";
 
         mPost_key = Objects.requireNonNull(getIntent().getExtras()).getString("key_name");
         child_Name = Objects.requireNonNull(getIntent().getExtras()).getString("childName");
@@ -199,15 +207,12 @@ public class McqVersion1 extends AppCompatActivity {
     public void updateLevelEachQuestionStatus(int a) {
         if (a < 2) {
             mTxt_PointEachQ.setText(getResources().getString(R.string.primary));
-            //mTxt_PointEachQ.setBackgroundColor(Color.parseColor("#80ff1a1a"));
             mTxt_PointEachQ.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_background));
         } else if (a == 2 || a == 3) {
             mTxt_PointEachQ.setText(getResources().getString(R.string.learning));
-            //mTxt_PointEachQ.setBackgroundColor(Color.parseColor("#80ffff1a"));
             mTxt_PointEachQ.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_yellow));
         } else {
             mTxt_PointEachQ.setText(getResources().getString(R.string.master));
-            //mTxt_PointEachQ.setBackgroundColor(Color.parseColor("#8033ff33"));
             mTxt_PointEachQ.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_green));
         }
     }
@@ -3014,12 +3019,17 @@ public class McqVersion1 extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-//        if (adView1 != null) {
-//            adView1.destroy();
-//        }
-//        if (adView2 != null) {
-//            adView2.destroy();
-//        }
         super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        interstitial_ad.showInterstitial();
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        interstitial_ad.showInterstitial();
     }
 }
