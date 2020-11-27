@@ -1,14 +1,19 @@
 <resources>
     //App ID and Banner Ad ID, Interstitial ad ID
-    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="app_id">ca-app-pub-2522810443010389~5106455786</string>
+    <string name="banner_id">ca-app-pub-2522810443010389/6124023985</string>
+
+<!--    Below are the IDs for TEST Ad of the Admob-->
+<!--    AdMob App ID: ca-app-pub-3940256099942544~3347511713-->
+<!--    Banner 	ca-app-pub-3940256099942544/6300978111-->
+<!--    Interstitial 	ca-app-pub-3940256099942544/1033173712-->
 
 
     <string name="app_name">BCS English</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">MCQ Section</string>
     <string name="title_notifications">Memorize</string>
-    <string name="no_explanation"><h2>No <span style="text-decoration: underline;">explanatoin</span>
+    <string name="no_explanation"><h2>No <span style="text-decoration: underline;">explanation</span>
         is given for this question!</h2></string>
 
     <string name="privacy_policy">Privacy Policy</string>
