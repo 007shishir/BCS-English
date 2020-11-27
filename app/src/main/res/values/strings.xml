@@ -1,7 +1,7 @@
 <resources>
     //App ID and Banner Ad ID, Interstitial ad ID
-    <string name="app_id">ca-app-pub-2522810443010389~5106455786</string>
-    <string name="banner_id">ca-app-pub-2522810443010389/6124023985</string>
+    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
 
 <!--    Below are the IDs for TEST Ad of the Admob-->
 <!--    AdMob App ID: ca-app-pub-3940256099942544~3347511713-->
@@ -69,5 +69,25 @@
     <string name="reciverOfMail">To:</string>
     <string name="ee">ee</string>
     <string name="e">e</string>
+    <string name="parts_of_speech">Parts of Speech</string>
+    <string name="idioms_and_phrases">Idioms and Phrases</string>
+    <string name="clauses_and_corrections">Clauses and Corrections</string>
+    <string name="transformation_of_sentences">Transformation of Sentences</string>
+    <string name="transformation_of_voice">Transformation of Voice</string>
+    <string name="transformation_of_degrees">Transformation of Degrees</string>
+    <string name="words_meaning">Words Meaning</string>
+    <string name="synonyms">Synonyms</string>
+    <string name="antonyms">Antonyms</string>
+    <string name="spellings">Spellings</string>
+    <string name="words_remaining_part">Words Remaining Part</string>
+    <string name="narration">Narration</string>
+    <string name="conditional_sentence">Conditional Sentence</string>
+    <string name="analogy">Analogy</string>
+    <string name="diction">Diction</string>
+    <string name="translation">Translation</string>
+    <string name="mcq_banner">MCQ Section\nBCS English</string>
+    <string name="logo_image">Logo Image</string>
+    <string name="memorize_banner">Memorize Section\nBCS English</string>
+    <string name="additional_chapters">Additional Chapters</string>
 
 </resources>

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -27,7 +28,6 @@ import com.google.android.gms.ads.initialization.OnInitializationCompleteListene
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.saiful.bcsenglish.AdmobAd;
-import com.saiful.bcsenglish.Interstitial_ad;
 import com.saiful.bcsenglish.R;
 
 import java.util.List;
@@ -71,7 +71,6 @@ public class MemorizeVersion1 extends AppCompatActivity {
 
     String mPost_key;
     String child_Name;
-    private Interstitial_ad interstitial_ad;
 
 
     @Override
@@ -101,11 +100,6 @@ public class MemorizeVersion1 extends AppCompatActivity {
         //initializing banner id
         AdmobAd admobAd = new AdmobAd((AdView) findViewById(R.id.adView));
         admobAd.bannerAd_initialize();
-
-        //Initializing Interstitial ad
-        interstitial_ad = new Interstitial_ad(getApplicationContext());
-        interstitial_ad.createInterstitial();
-        interstitial_ad.showInterstitial();
 
         //This section is for linking the text box with option
         mTxt_quest = findViewById(R.id.mTxt_quest);
@@ -373,14 +367,14 @@ public class MemorizeVersion1 extends AppCompatActivity {
     public void updateLevelStatus(int a) {
         if (a < 2) {
             mTxt_level.setText(getResources().getString(R.string.primary));
-            mTxt_level.setBackground(getResources().getDrawable(R.drawable.mcq_card_status_background));
+            mTxt_level.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_card_status_background));
         } else if (a == 2 || a == 3) {
             mTxt_level.setText(getResources().getString(R.string.learning));
-            mTxt_level.setBackground(getResources().getDrawable(R.drawable.mcq_card_status_yellow));
+            mTxt_level.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_card_status_yellow));
         } else {
             //Toast.makeText(MemorizeVersion1.this, "Congratulation, you got the highest mark!", Toast.LENGTH_SHORT).show();
             mTxt_level.setText(getResources().getString(R.string.master));
-            mTxt_level.setBackground(getResources().getDrawable(R.drawable.mcq_card_status_green));
+            mTxt_level.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_card_status_green));
         }
     }
 
@@ -3843,7 +3837,7 @@ public class MemorizeVersion1 extends AppCompatActivity {
                 viewModel.deleteAll(deleteID);
                 updateQuestion();
                 return true;
-            case R.id.refresh:
+            case  R.id.refresh:
                 Toast.makeText(getApplicationContext(), "refreshing",
                         Toast.LENGTH_LONG).show();
                 mTxt_Submit.setVisibility(View.VISIBLE);
@@ -3874,12 +3868,10 @@ public class MemorizeVersion1 extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        interstitial_ad.showInterstitial();
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        interstitial_ad.showInterstitial();
     }
 }

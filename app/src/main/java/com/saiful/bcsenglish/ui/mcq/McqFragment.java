@@ -1,4 +1,4 @@
-package com.saiful.bcsenglish.ui.dashboard;
+package com.saiful.bcsenglish.ui.mcq;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,23 +13,23 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import com.google.android.gms.ads.AdView;
 import com.saiful.bcsenglish.AdmobAd;
-import com.saiful.bcsenglish.Interstitial_ad;
 import com.saiful.bcsenglish.R;
 
 /**
  * This fragment will show all the option(clickable TextView) for MCQ section
  * @author Saiful Islam
  * @since 7 March 2020
+ * @version 2020.2
  */
 
-public class DashboardFragment extends Fragment implements View.OnClickListener {
-    private Interstitial_ad intAd;
+public class McqFragment extends Fragment implements View.OnClickListener {
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        McqViewModel mcqViewModel = new ViewModelProvider(this).get(McqViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_mcq, container, false);
 //        final TextView textView = root.findViewById(R.id.text_dashboard);
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        mcqViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
 //                textView.setText(s);
@@ -38,9 +38,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
         AdmobAd admobAd = new AdmobAd((AdView) root.findViewById(R.id.adView));
         admobAd.bannerAd_initialize();
-        intAd = new Interstitial_ad(getContext());
-        intAd.createInterstitial();
-        intAd.loadInterstitial();
 
         TextView mTxt_POS = root.findViewById(R.id.mTxt_POS);
         TextView mTxt_IdiomPhrase = root.findViewById(R.id.mTxt_IdiomPhrase);
@@ -82,7 +79,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-        Bundle child_name;
         switch (v.getId()) {
             case R.id.mTxt_POS:
                 go_to_mcq_recView(getResources().getString(R.string.mcq_parts_of_speech), v);
@@ -142,7 +138,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         Bundle child_name;
         child_name = new Bundle();
         child_name.putString("child_name", str);
-        intAd.showInterstitial();
         Navigation.findNavController(v).navigate(R.id.action_navigation_dashboard_to_mcqRecView, child_name);
     }
 

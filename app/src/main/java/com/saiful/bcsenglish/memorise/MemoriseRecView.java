@@ -7,27 +7,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.saiful.bcsenglish.Parameter;
 import com.saiful.bcsenglish.R;
 
-
-import java.util.Objects;
 
 import static android.content.Context.CONNECTIVITY_SERVICE;
 
@@ -53,19 +47,8 @@ public class MemoriseRecView extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_mcq_rec_view, container, false);
 
-        connectivityManager = (ConnectivityManager) Objects.
-                requireNonNull(getActivity()).getSystemService(CONNECTIVITY_SERVICE);
+        connectivityManager = (ConnectivityManager) requireActivity().getSystemService(CONNECTIVITY_SERVICE);
 
-//        // Initialize the Audience Network SDK
-//        AudienceNetworkAds.initialize(Objects.requireNonNull(getContext()));
-//        adView = new AdView(getContext(), getResources().getString(R.string.recycler_banner_ad),
-//                AdSize.BANNER_HEIGHT_90);
-//        // Find the Ad Container
-//        LinearLayout adContainer = root.findViewById(R.id.banner_container);
-//        // Add the ad view to your activity layout
-//        adContainer.addView(adView);
-//        // Request an ad
-//        adView.loadAd();
 
         assert getArguments() != null;
         childName_fromFragment = getArguments().getString("child_name");
@@ -156,9 +139,6 @@ public class MemoriseRecView extends Fragment {
 
     @Override
     public void onDestroy() {
-//        if (adView != null) {
-//            adView.destroy();
-//        }
         super.onDestroy();
     }
 }

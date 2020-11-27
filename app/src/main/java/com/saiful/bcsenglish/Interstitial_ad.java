@@ -15,6 +15,7 @@ import com.saiful.bcsenglish.interFace.Iinterstitial_Ad;
  * showInterstitial() - to show the ad
  * @author Saiful Islam
  * @since 6 March 2020"
+ * @deprecated 27 november 2020
  */
 public class Interstitial_ad implements Iinterstitial_Ad {
     private com.google.android.gms.ads.InterstitialAd mInterstitialAd;
@@ -28,10 +29,10 @@ public class Interstitial_ad implements Iinterstitial_Ad {
     @Override
     public void createInterstitial() {
         mInterstitialAd = new com.google.android.gms.ads.InterstitialAd(context);
-        mInterstitialAd.setAdUnitId("ca-app-pub-2522810443010389/6227965761");
+//        mInterstitialAd.setAdUnitId("ca-app-pub-2522810443010389/6227965761");
 
         //Below is for the TEST purpose only
-//        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
@@ -44,11 +45,6 @@ public class Interstitial_ad implements Iinterstitial_Ad {
                 loadInterstitial();
             }
 
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-//                Log.d(TAG, "Failed"+i);
-            }
         });
         loadInterstitial();
     }

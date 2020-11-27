@@ -6,7 +6,9 @@ public interface Iinterstitial_Ad {
      * loadInterstitial() is for loading
      * and showInterstitial() to show the ad
      * @author Saiful Islam
-     * @since 6 March 2020*/
+     * @since 6 March 2020
+     * @deprecated 22 november 2020
+     * */
 
     //Initialize the ad
     void createInterstitial();

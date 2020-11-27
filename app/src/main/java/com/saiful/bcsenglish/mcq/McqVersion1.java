@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -26,7 +27,6 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 import java.util.Objects;
 import com.saiful.bcsenglish.AdmobAd;
-import com.saiful.bcsenglish.Interstitial_ad;
 import com.saiful.bcsenglish.R;
 
 /**
@@ -112,8 +112,6 @@ public class McqVersion1 extends AppCompatActivity {
     private Button btn_prev;
     private Button btn_refresh;
 
-    Interstitial_ad interstitial_ad;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,11 +130,6 @@ public class McqVersion1 extends AppCompatActivity {
         //initializing banner id
         AdmobAd admobAd = new AdmobAd((AdView) findViewById(R.id.adView));
         admobAd.bannerAd_initialize();
-
-        //Initializing Interstitial ad
-        interstitial_ad = new Interstitial_ad(getApplicationContext());
-        interstitial_ad.createInterstitial();
-        interstitial_ad.showInterstitial();
 
         //connecting with viewmodel class
         mcq_viewModel = new ViewModelProvider(this).get(Mcq_ViewModel.class);
@@ -207,13 +200,13 @@ public class McqVersion1 extends AppCompatActivity {
     public void updateLevelEachQuestionStatus(int a) {
         if (a < 2) {
             mTxt_PointEachQ.setText(getResources().getString(R.string.primary));
-            mTxt_PointEachQ.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_background));
+            mTxt_PointEachQ.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_background));
         } else if (a == 2 || a == 3) {
             mTxt_PointEachQ.setText(getResources().getString(R.string.learning));
-            mTxt_PointEachQ.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_yellow));
+            mTxt_PointEachQ.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_yellow));
         } else {
             mTxt_PointEachQ.setText(getResources().getString(R.string.master));
-            mTxt_PointEachQ.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_green));
+            mTxt_PointEachQ.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_green));
         }
     }
 
@@ -396,7 +389,7 @@ public class McqVersion1 extends AppCompatActivity {
                         String mRightvWrong = "Check";
 
                         //set Background color for RIGHT v WRONG indicator Text box
-                        mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_answer_background));
+                        mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_answer_background));
 
                         mBtn_submit.setText(mSubmit);
                         mTxt_ans.setText(mAnswer);
@@ -445,7 +438,7 @@ public class McqVersion1 extends AppCompatActivity {
                             //Toast.makeText(McqQuestion.this, "Correct", Toast.LENGTH_SHORT).show();
 
                             //set Background color for RIGHT v WRONG indicator Text box
-                            mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_green));
+                            mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_green));
 
                             answeredQn = mQuestNum - 1;
                             totalPoint++;
@@ -471,7 +464,7 @@ public class McqVersion1 extends AppCompatActivity {
                             mTxt_RIGHTvWRONG.setText(getResources().getString(R.string.wrong));
 
                             //set Background color for RIGHT v WRONG indicator Text box
-                            mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_background));
+                            mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_background));
 
                             mTxt_ans.setText(showResult);
                             unAnsweredQN = mQuestNum - 1;
@@ -493,7 +486,7 @@ public class McqVersion1 extends AppCompatActivity {
                             mTxt_RIGHTvWRONG.setText(getResources().getString(R.string.wrong));
 
                             //set Background color for RIGHT v WRONG indicator Text box
-                            mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_background));
+                            mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_background));
 
                             mTxt_ans.setText(showResult);
                             //Toast.makeText(McqQuestion.this, "Wrong Answer, Question No.: " + questionN[unAnsweredQN], Toast.LENGTH_SHORT).show();
@@ -597,14 +590,14 @@ public class McqVersion1 extends AppCompatActivity {
     public void updateLevelStatus(int a) {
         if (a < 2) {
             mTxt_level.setText(getResources().getString(R.string.primary));
-            mTxt_level.setBackground(getResources().getDrawable(R.drawable.mcq_card_status_background));
+            mTxt_level.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_card_status_background));
         } else if (a == 2 || a == 3) {
             mTxt_level.setText(getResources().getString(R.string.learning));
-            mTxt_level.setBackground(getResources().getDrawable(R.drawable.mcq_card_status_yellow));
+            mTxt_level.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_card_status_yellow));
         } else {
             //Toast.makeText(McqVersion1.this, "Congratulation, you got the highest mark!", Toast.LENGTH_SHORT).show();
             mTxt_level.setText(getResources().getString(R.string.master));
-            mTxt_level.setBackground(getResources().getDrawable(R.drawable.mcq_card_status_green));
+            mTxt_level.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_card_status_green));
         }
     }
 
@@ -1525,7 +1518,7 @@ public class McqVersion1 extends AppCompatActivity {
                                 String mRightvWrong = "Check";
 
                                 //set Background color for RIGHT v WRONG indicator Text box
-                                mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_answer_background));
+                                mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_answer_background));
 
                                 mBtn_submit.setText(mSubmit);
                                 mTxt_ans.setText(mAnswer);
@@ -1586,7 +1579,7 @@ public class McqVersion1 extends AppCompatActivity {
                             //Toast.makeText(McqQuestion.this, "Correct", Toast.LENGTH_SHORT).show();
 
                             //set Background color for RIGHT v WRONG indicator Text box
-                            mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_green));
+                            mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_green));
 
                             answeredQn = mQuestNum - 1;
                             //eachQuestStatusSUCCESS() is replaced with stopRepeatMarkCountSUCCESS() to stop repeat count
@@ -1608,7 +1601,7 @@ public class McqVersion1 extends AppCompatActivity {
                             mTxt_RIGHTvWRONG.setText(getResources().getString(R.string.wrong));
 
                             //set Background color for RIGHT v WRONG indicator Text box
-                            mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_background));
+                            mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_background));
 
                             unAnsweredQN = mQuestNum - 1;
 
@@ -1628,7 +1621,7 @@ public class McqVersion1 extends AppCompatActivity {
                             //Toast.makeText(McqQuestion.this, "Wrong Answer, Question No.: " + questionN[unAnsweredQN], Toast.LENGTH_SHORT).show();
 
                             //set Background color for RIGHT v WRONG indicator Text box
-                            mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_question_status_background));
+                            mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_question_status_background));
 
                             initialState_offline();
                             unAnsweredQN = mQuestNum - 1;
@@ -1718,7 +1711,7 @@ public class McqVersion1 extends AppCompatActivity {
                 mTxt_expl.setText(mExplanation);
                 mTxt_RIGHTvWRONG.setText(chooseAnswer);
                 //set Background color for RIGHT v WRONG indicator Text box
-                mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_answer_background));
+                mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_answer_background));
 
                 updateQuestion();
             }
@@ -1748,7 +1741,7 @@ public class McqVersion1 extends AppCompatActivity {
         String mRightvWrong = "Check";
 
         //set Background color for RIGHT v WRONG indicator Text box
-        mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_answer_background));
+        mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_answer_background));
 
         mBtn_submit.setText(mSubmit);
         mTxt_ans.setText(mAnswer);
@@ -1784,7 +1777,7 @@ public class McqVersion1 extends AppCompatActivity {
         String mRightvWrong = "Check";
 
         //set Background color for RIGHT v WRONG indicator Text box
-        mTxt_RIGHTvWRONG.setBackground(getResources().getDrawable(R.drawable.mcq_answer_background));
+        mTxt_RIGHTvWRONG.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.mcq_answer_background));
         mBtn_submit.setText(mSubmit);
         mTxt_ans.setText(mAnswer);
         mTxt_expl.setText(mExplanation);
@@ -3025,11 +3018,9 @@ public class McqVersion1 extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        interstitial_ad.showInterstitial();
     }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        interstitial_ad.showInterstitial();
     }
 }

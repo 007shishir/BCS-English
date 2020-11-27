@@ -27,7 +27,7 @@
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/logo"
                 android:layout_gravity="center"
-                android:contentDescription="Logo Image"/>
+                android:contentDescription="@string/logo_image"/>
 
             <Button
                 android:id="@+id/mBtn_privacy"
